@@ -5,7 +5,7 @@ const { getuserById } = require('./js-foundation/03-callback')
 
 
 
-getuserById( 10,function(error,user){
+getuserById( 1,(error,user) => {
     if(error){
         throw new Error(error) 
     }
