@@ -11,6 +11,9 @@ const { SHELL, HOMEBREW_PREFIX } =  process.env;
 
 
 
-const  CHARACTERS = ['flash', 'superman', 'batman'];
+const  CHARACTERS = ['flash', 'superman', 'greenlanter','batman'];
 
 const [f, s, b] = CHARACTERS;
+
+
+
