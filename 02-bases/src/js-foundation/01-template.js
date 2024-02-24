@@ -10,7 +10,6 @@ const emailTamplate = `
    
 
     // modlulo de exportacion 
-    
     module.exports = {
         emailTamplate
     }
