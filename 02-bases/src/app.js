@@ -1,17 +1,11 @@
 
 // const { emailTamplate } = require('./js-foundation/01-template')
 // require('./js-foundation/02-destructuring')
-const { getuserById } = require('./js-foundation/03-callback')
+// const { getuserById } = require('./js-foundation/03-callback')
+const { getuserById } = require('./js-foundation/05-factory')
 
 
 
-getuserById( 1,(error,user) => {
-    if(error){
-        throw new Error(error) 
-    }
-
-    console.log(user)
-} )
 
 
 
