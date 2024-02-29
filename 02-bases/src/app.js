@@ -1,21 +1,28 @@
-
 const { getAge,getUuid } = require('./plugins')
 
 // const { emailTamplate } = require('./js-foundation/01-template')
 // require('./js-foundation/02-destructuring')
 // const { getuserById } = require('./js-foundation/03-callback')
 // const { getuserById } = require('./js-foundation/05-factory')
-const { buildMakePerson } = require('./js-foundation/05-factory')
+// const { buildMakePerson } = require('./js-foundation/05-factory')
+const getPokemonById = require('./js-foundation/06-promises')
 
 
-// Es un funcion que regresa una funcion 
-const makeAperson = buildMakePerson( { getAge,getUuid } )
+getPokemonById(1)
+    .then( (pokemon) => console.log(pokemon))
+    .catch( (err) => console.log('Intente de nuevo') )
+    .finally( () => console.log('Final') )
 
-const obj = { name: 'Goku', birthdate: '1993-01-19'}
 
-const goku = makeAperson(obj)
 
-console.log(goku)
+// ! Es un funcion que regresa una funcion 
+// const makeAperson = buildMakePerson( { getAge,getUuid } )
+
+// const obj = { name: 'Goku', birthdate: '1993-01-19'}
+
+// const goku = makeAperson(obj)
+
+// console.log(goku)
 
 
 
