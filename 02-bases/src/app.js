@@ -5,13 +5,20 @@ const { getAge,getUuid } = require('./plugins')
 // const { getuserById } = require('./js-foundation/03-callback')
 // const { getuserById } = require('./js-foundation/05-factory')
 // const { buildMakePerson } = require('./js-foundation/05-factory')
-const getPokemonById = require('./js-foundation/06-promises')
+// const getPokemonById = require('./js-foundation/06-promises')
+const { buildLogger } = require('./plugins')
+
+const logger = buildLogger('app.js')
+
+logger.log('Hola mundo')
+logger.error('Esto es algo malo')
+
+// getPokemonById(1)
+//     .then( (pokemon) => console.log(pokemon))
+//     .catch( (err) => console.log('Intente de nuevo') )
+//     .finally( () => console.log('Final') )
 
 
-getPokemonById(1)
-    .then( (pokemon) => console.log(pokemon))
-    .catch( (err) => console.log('Intente de nuevo') )
-    .finally( () => console.log('Final') )
 
 
 
