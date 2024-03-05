@@ -33,7 +33,7 @@ const findWarriorById = ( id:number ) => {
 }
 
 
-const warrior = findWarriorById(10)
+const warrior = findWarriorById(3)
 
 console.log(warrior?.name ?? 'Warrior Z not found')
 

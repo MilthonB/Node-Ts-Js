@@ -30,5 +30,5 @@ const warriors = [
 const findWarriorById = (id) => {
     return warriors.find((warrior) => warrior.id === id);
 };
-const warrior = findWarriorById(10);
+const warrior = findWarriorById(3);
 console.log((_a = warrior === null || warrior === void 0 ? void 0 : warrior.name) !== null && _a !== void 0 ? _a : 'Warrior Z not found');
