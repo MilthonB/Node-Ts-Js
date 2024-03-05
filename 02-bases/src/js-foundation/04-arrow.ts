@@ -1,5 +1,11 @@
 
 
+interface User  {
+    id: number,
+    name: string,
+}
+
+
 const users = [
     {
         id:1,
@@ -25,7 +31,7 @@ const users = [
 
 
 
-const getuserById = ( id, callback ) =>{
+export const getuserById = ( id:number, callback:(err?:string, user?:User)=>{} ) =>{
 
 
     const user = users.find( user => user.id === id);
@@ -33,15 +39,11 @@ const getuserById = ( id, callback ) =>{
 
 
     (user)
-    ?callback(null, user)
+    ?callback(undefined, user)
     :callback(`USUARIO NO ENCONTRADO ${id}`);
     
 }
 
-
-module.exports = {
-    getuserById
-}
 
 
 

@@ -1,13 +1,20 @@
+import { getUuid } from '../plugins/get-id.plugin';
+import { getAge } from '../plugins/get-age.plugin';
 
+interface BuildMakerPersonOptions {
+    getUuid: ()=>  string;
+    getAge: (birthdate:string) => number
+}
 
-const { getUuid,getAge } = require('../plugins/index')
-
-
+interface PersonOption {
+    name:string;
+    birthdate:string
+}
 
 // Factory function es una funcion que regresa una funcion
-const buildMakePerson = ({ getUuid, getAge }) =>{
+export const buildMakePerson = ({ getUuid, getAge }:BuildMakerPersonOptions) =>{
 
-    return  ({name,birthdate})=>{
+    return  ({name,birthdate}:PersonOption)=>{
         return {
             id: getUuid(),
             name,
@@ -37,11 +44,3 @@ const buildMakePerson = ({ getUuid, getAge }) =>{
 
 
 // console.log(person)
-
-module.exports = {
-    buildMakePerson
-}
-
-
-
-

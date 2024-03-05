@@ -1,4 +1,6 @@
-const { getAge,getUuid } = require('./plugins')
+// const { getAge,getUuid } = require('./plugins')
+
+import { buildLogger } from "./plugins/logger.plugin";
 
 // const { emailTamplate } = require('./js-foundation/01-template')
 // require('./js-foundation/02-destructuring')
@@ -6,7 +8,7 @@ const { getAge,getUuid } = require('./plugins')
 // const { getuserById } = require('./js-foundation/05-factory')
 // const { buildMakePerson } = require('./js-foundation/05-factory')
 // const getPokemonById = require('./js-foundation/06-promises')
-const { buildLogger } = require('./plugins')
+// const { buildLogger } = require('./plugins')
 
 const logger = buildLogger('app.js')
 
@@ -30,6 +32,7 @@ logger.error('Esto es algo malo')
 // const goku = makeAperson(obj)
 
 // console.log(goku)
+
 
 
 
