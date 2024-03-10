@@ -13,11 +13,11 @@ export const yarg = yargs(hideBin(process.argv))  //{ _: [], b: 10, '$0': 'src/a
 .option('l', {
     alias:'limt',
     type:'number',
-    default:'10',
+    default:10,
     describe:'Multiplication table limit'
 })
 .option('s',{
-    alias:'show',
+    alias:'showTable',
     type:'boolean',
     default:true,
     describe:'Show multiplication table'
