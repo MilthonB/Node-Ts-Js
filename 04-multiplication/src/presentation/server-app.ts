@@ -1,3 +1,5 @@
+import { CreateTable } from "../domain/use-cases/create-table-use-case";
+import { SaveFile } from "../domain/use-cases/save-file.use-case";
 
 
 interface RunOption {
@@ -10,8 +12,22 @@ interface RunOption {
 
 export class ServerApp {
 
-    static run( option:RunOption ) {
+    static run( { base, limit, showTable }:RunOption ) {
         console.log('Server runnige...')
-        console.log( { option } )
+
+
+        const table = new CreateTable().execute({base,limit})
+
+        const wasCreated =  new SaveFile().execute({
+            fileContent:table,
+        })
+
+        if(showTable) {
+            console.log(table)   
+        }
+
+        ( wasCreated )
+        ? console.log('Fue creado')
+        : console.error('Ocurrio un error')
     }
 }
