@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npx ts-node src/app --base 12 -s --limit 30 --name tuuu -d salidas",
     "dev": "ts-node  src/app.ts",
     "dev:nodemon": "nodemon -b 7",
     "build": "rimraf ./dist && tsc",

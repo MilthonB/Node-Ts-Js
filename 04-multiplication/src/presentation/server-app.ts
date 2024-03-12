@@ -6,13 +6,15 @@ interface RunOption {
 
     base:number;
     limit:number;
+    destination:string
+    name:string
     showTable:boolean;
 
 }
 
 export class ServerApp {
 
-    static run( { base, limit, showTable }:RunOption ) {
+    static run( { base, limit, showTable,name,destination }:RunOption ) {
         console.log('Server runnige...')
 
 
@@ -20,6 +22,8 @@ export class ServerApp {
 
         const wasCreated =  new SaveFile().execute({
             fileContent:table,
+            destination,
+            fileName:name
         })
 
         if(showTable) {

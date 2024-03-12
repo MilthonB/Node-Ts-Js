@@ -25,9 +25,9 @@ import { ServerApp } from "./presentation/server-app";
 
 async function main() {
 
-    const {b:base, l:limit, s:showTable} = yarg
+    const {b:base, l:limit, s:showTable, d:destination, n:name} = yarg
 
-    ServerApp.run({base, limit, showTable})
+    ServerApp.run({base, limit, showTable,destination, name})
 }
 
 
