@@ -1,3 +1,4 @@
+import { CheckService } from "../domain/use-cases/checks/check-service";
 import { CronService } from "./cron/cron-service"
 
 export class Server {
@@ -10,24 +11,11 @@ export class Server {
         CronService.createJob( 
             '*/5 * * * * *', // cronTime
             () => {
-                const date =  new Date()    
-        		console.log(' 5 second ', date);
-        	}	
-        );
-
-        CronService.createJob( 
-            '*/5 * * * * *', // cronTime
-            () => {
-                const date =  new Date()    
-        		console.log(' 2 second ', date);
-        	}	
-        );
-
-        CronService.createJob( 
-            '*/5 * * * * *', // cronTime
-            () => {
-                const date =  new Date()    
-        		console.log(' 3 second ', date);
+                const url = 'http://localhost:3000/' 
+                new CheckService(
+                    () => console.log('success'),
+                    ( error ) => console.log(error)
+                ).execute(url);
         	}	
         );
 
