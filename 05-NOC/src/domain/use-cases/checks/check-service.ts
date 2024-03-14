@@ -1,3 +1,5 @@
+import { LogEntity, LogSeverityLevel } from "../../entities/log.entity";
+import { LogRepository } from "../../repository/log.repository";
 
 
 interface CheckServiceUseCase {
@@ -13,6 +15,7 @@ export class CheckService implements CheckServiceUseCase{
 
     // inyeccion de dependencias 
     constructor(
+        private logRepository: LogRepository,
         private readonly successCallback: SucessCallbakc,
         private readonly errorCallback: ErrorCallbakc
     ){}
@@ -26,12 +29,17 @@ export class CheckService implements CheckServiceUseCase{
                 throw new Error(`Error on check service ${ url } `)
             }
 
+            const log = new LogEntity(` The ${url} is working...`, LogSeverityLevel.low )
+            this.logRepository.saveLog(log)
             this.successCallback();
             return true
 
         } catch (error) {
-            this.errorCallback(`${error}`)
-            console.log(`${error}`)
+
+            const logMessage = `${error}`
+            const log = new LogEntity(logMessage, LogSeverityLevel.high);
+            this.logRepository.saveLog(log)
+            this.errorCallback( logMessage )
             return false
         }
         
