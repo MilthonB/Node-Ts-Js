@@ -1,4 +1,4 @@
-import { LogEntity, LogSeverityLevel } from "../../entities/log.entity";
+import { LogEntity, LogEntityOptios, LogSeverityLevel } from "../../entities/log.entity";
 import { LogRepository } from "../../repository/log.repository";
 
 
@@ -10,16 +10,17 @@ interface CheckServiceUseCase {
 type SucessCallbakc =  ()=> void;
 type ErrorCallbakc = (erro:string)=> void;
 
+
 export class CheckService implements CheckServiceUseCase{
-
-
+    
+    
     // inyeccion de dependencias 
     constructor(
         private logRepository: LogRepository,
         private readonly successCallback: SucessCallbakc,
         private readonly errorCallback: ErrorCallbakc
-    ){}
-
+        ){}
+        
 
     async execute( url: string ):Promise<boolean>{
 
@@ -29,7 +30,12 @@ export class CheckService implements CheckServiceUseCase{
                 throw new Error(`Error on check service ${ url } `)
             }
 
-            const log = new LogEntity(` The ${url} is working...`, LogSeverityLevel.low )
+            const log = new LogEntity({
+                message: `Server${ url } working...`,
+                level: LogSeverityLevel.low,
+                createdAt: new Date(),
+                origin: 'check-service.ts'})
+
             this.logRepository.saveLog(log)
             this.successCallback();
             return true
@@ -37,7 +43,11 @@ export class CheckService implements CheckServiceUseCase{
         } catch (error) {
 
             const logMessage = `${error}`
-            const log = new LogEntity(logMessage, LogSeverityLevel.high);
+            const log = new LogEntity({
+                message: logMessage,
+                level: LogSeverityLevel.high,
+                createdAt: new Date(),
+                origin: 'check-service.ts'});
             this.logRepository.saveLog(log)
             this.errorCallback( logMessage )
             return false
