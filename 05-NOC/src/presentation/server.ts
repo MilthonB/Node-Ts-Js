@@ -1,6 +1,7 @@
 import { envs } from "../config/env.plugin";
 import { LogRepository } from "../domain/repository/log.repository";
 import { CheckService } from "../domain/use-cases/checks/check-service";
+import { SenEmailLogs } from "../domain/use-cases/email/send-email-log";
 import { FileSystemDataSource } from "../infrastructure/datasources/file-system.datasource";
 import { LogRepositoryImpl } from "../infrastructure/datasources/repositories/log.repositorie.impl";
 import { CronService } from "./cron/cron-service"
@@ -9,7 +10,7 @@ import { EmailService } from "./email/email.service";
 const fileSytemLogRepository = new LogRepositoryImpl(
     new FileSystemDataSource
 )
-
+const emailService =  new EmailService();
 
 export class Server {
 
@@ -20,11 +21,12 @@ export class Server {
 
 
 
-        const emailService =  new EmailService(
+        
+        new SenEmailLogs(
+            emailService,
             fileSytemLogRepository
-        );
-
-        emailService.sendEmailwithFileSystmeLogs('milthonbor@gmail.com')
+        ).execute('milthonbor@gmail.com')
+        // emailService.sendEmailwithFileSystmeLogs('milthonbor@gmail.com')
 
         // emailService.senEmail({
         //     to: 'milthonbor@gmail.com',

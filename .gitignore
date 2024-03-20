@@ -7,3 +7,5 @@ log/
 logs/
 
 .env
+
+mongo/

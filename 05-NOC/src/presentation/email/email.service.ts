@@ -33,7 +33,7 @@ export class EmailService{
     });
 
 
-    constructor( private readonly logrepository: LogRepository ){}
+    // constructor( private readonly logrepository: LogRepository ){}
 
 
 
@@ -48,27 +48,27 @@ export class EmailService{
                 attachments: attachements
             })
 
-            const logMaildSuccess = {
+            // const logMaildSuccess = {
 
-                level: LogSeverityLevel.low, // Enum
-                message: 'Email send',
-                createdAt: new Date(),
-                origion: 'email.service.ts'
-            }
-            const res =  this.logrepository.saveLog(logMaildSuccess)
+            //     level: LogSeverityLevel.low, // Enum
+            //     message: 'Email send',
+            //     createdAt: new Date(),
+            //     origion: 'email.service.ts'
+            // }
+            // const res =  this.logrepository.saveLog(logMaildSuccess)
 
             
             return true;
         } catch (error) {
 
-            const logMaildError = {
+            // const logMaildError = {
 
-                level: LogSeverityLevel.high, // Enum
-                message: 'Email send failed',
-                createdAt: new Date(),
-                origion: 'email.service.ts'
-            }
-            const res =  this.logrepository.saveLog(logMaildError)
+            //     level: LogSeverityLevel.high, // Enum
+            //     message: 'Email send failed',
+            //     createdAt: new Date(),
+            //     origion: 'email.service.ts'
+            // }
+            // const res =  this.logrepository.saveLog(logMaildError)
             return false;
         }
 
