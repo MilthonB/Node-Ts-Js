@@ -4,6 +4,7 @@ import 'dotenv/config'
 
 import { Server } from "./presentation/server";
 import { envs } from './config/env.plugin';
+import { MongoDataBase } from './data/mongo/init';
 
 
 
@@ -13,8 +14,14 @@ import { envs } from './config/env.plugin';
 })()
 
 
-function main(){
-    Server.start()
+async function main(){
+
+    await MongoDataBase.connect({
+        mongoUrl: envs.MONGO_URL,
+        dbName: envs.MONGO_DB_NAME
+    })
+
+    // Server.start()
     // console.log(envs.PORT)
 }
 
